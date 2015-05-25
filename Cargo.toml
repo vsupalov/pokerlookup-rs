@@ -1,0 +1,20 @@
+[package]
+name = "pokerlookup"
+version = "0.1.0"
+authors = ["Vladislav Supalov <v.supalov@gmail.com>"]
+
+[lib]
+name = "pokerlookup"
+
+[[bin]]
+name = "genrate"
+path = "src/bin/main.rs"
+
+[dependencies.cards]
+git = "https://github.com/th4t/cards-rs.git"
+
+[dependencies.holdem]
+git = "https://github.com/th4t/holdem-rs.git"
+
+[dependencies.pokereval]
+git = "https://github.com/th4t/pokereval-rs.git"

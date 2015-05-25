@@ -12,9 +12,12 @@ path = "src/bin/main.rs"
 
 [dependencies.cards]
 git = "https://github.com/th4t/cards-rs.git"
+rev = "75666740f4c3a210f00cf5ebfd07e1cbed212152"
 
 [dependencies.holdem]
 git = "https://github.com/th4t/holdem-rs.git"
+rev = "e0044c1906cd7e80f4158643960787c48741c89b"
 
 [dependencies.pokereval]
 git = "https://github.com/th4t/pokereval-rs.git"
+rev = "36fa420c366643d94e369413b977d3dcf62f37ad"

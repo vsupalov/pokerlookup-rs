@@ -30,4 +30,4 @@ As the original cpp code for this was licensed under GPL, this crate carries a s
 * [cards-rs](https://github.com/th4t/cards-rs)
 * [holdem-rs](https://github.com/th4t/holdem-rs)
 * [pokereval-rs](https://github.com/th4t/pokereval-rs)
-* pokerlookup-rs
+* **pokerlookup-rs**

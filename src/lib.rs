@@ -1,3 +1,6 @@
+//! pokerlookup-rs contains the means to generate a large lookup table, which can be
+//! subsequently used to evaluate large amounts of 5, 6 and 7 card poker hands really fast.
+
 // TODO: mention GPL license? It's based on gpl code
 
 extern crate cards;

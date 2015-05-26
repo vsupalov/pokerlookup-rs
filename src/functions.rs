@@ -51,7 +51,7 @@ fn print_workcards(cards: &[i32; 8], numevalcards: &i32) {
 */
 
 // adding a new card to this ID
-pub fn make_id(id_in: i64, card: i32, numcards: &mut i32) -> i64 {
+pub fn make_id(id_in: i64, card: i32, numcards: &mut i32) -> Option<i64> {
     let mut newcard = card;
 
     let mut suitcount : [i32;4+1] = [0;5];
@@ -83,13 +83,13 @@ pub fn make_id(id_in: i64, card: i32, numcards: &mut i32) -> i64 {
         *numcards += 1;
     }
 
-    if getout != 0 { return 0; } // duplicated another card (ignore this one)
+    if getout != 0 { return None; } // duplicated another card (ignore this one)
 
     let needsuited : i32 = *numcards - 2; // for suit to be significant - need to have n-2 of same suit
     if *numcards > 4 {
         for rank in 1..14 {
             if rankcount[rank] > 4 { // if I have more than 4 of a rank then I shouldn't do this one!!
-                return 0; // can't have more than 4 of a rank so return an ID that can't be!
+                return None; // can't have more than 4 of a rank so return an ID that can't be!
             }
         }
     }
@@ -138,13 +138,13 @@ pub fn make_id(id_in: i64, card: i32, numcards: &mut i32) -> i64 {
     // long winded way to put the pieces into a __int64 
     // cards in bytes --66554433221100   
     // the resulting ID is a 64 bit value with each card represented by 8 bits.
-    workcards[0] as i64 +
-    ((workcards[1] as i64) << 8) +
-    ((workcards[2] as i64) << 16) +
-    ((workcards[3] as i64) << 24) +
-    ((workcards[4] as i64) << 32) +
-    ((workcards[5] as i64) << 40) +
-    ((workcards[6] as i64) << 48)
+    Some(workcards[0] as i64 +
+        ((workcards[1] as i64) << 8) +
+        ((workcards[2] as i64) << 16) +
+        ((workcards[3] as i64) << 24) +
+        ((workcards[4] as i64) << 32) +
+        ((workcards[5] as i64) << 40) +
+        ((workcards[6] as i64) << 48))
 }
 
 const PRIMES : [i32; 13] = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41];

@@ -84,8 +84,10 @@ impl LookupTable {
             // ORIG: start at 1 so I have a zero catching entry (just in case)
             for card in 1..53 {
                 // DIFFERENCE: 'explicit numcards pass' differs
-                let a_card_more : i64 = make_id(sub_hand as i64, card, &mut numcards);
-                if a_card_more == 0 { continue; } //impossible hand
+                let a_card_more : i64 = match make_id(sub_hand as i64, card, &mut numcards) {
+                    None => continue, //impossible hand
+                    Some(x) => x
+                };
 
                 let ret = sub_hands.insert(a_card_more as u64, 0);
 
@@ -108,7 +110,10 @@ impl LookupTable {
         for (sub_hand, sub_hand_position) in sub_hands.iter() {
             for card in 1..53 {
                 let max_hr = *sub_hand_position * 53 + card + 53;
-                let a_card_more = make_id(*sub_hand as i64, card as i32, &mut numcards); //DIFFERENCE: once again, explicit numcards pass differs
+                let a_card_more = match make_id(*sub_hand as i64, card as i32, &mut numcards) {
+                    None => 0,
+                    Some(x) => x
+                };
 
                 if numcards == 7 {
                     hr[max_hr as usize] = do_eval(a_card_more); //do_eval(*sub_hand as i64, &numcards) //DIFFERENCE: idem numcards

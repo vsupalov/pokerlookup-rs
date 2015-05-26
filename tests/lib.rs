@@ -25,13 +25,13 @@ fn generate_and_save() {
     let mut table = LookupTable::generate();
     table.save(out_path);
 
-    let c1 = Card(Value::Two, Suit::Spades);
-    let c2 = Card(Value::Two, Suit::Hearts);
-    let c3 = Card(Value::Two, Suit::Diamonds);
-    let c4 = Card(Value::Two, Suit::Clubs);
-    let c5 = Card(Value::Three, Suit::Hearts);
-    let c6 = Card(Value::Three, Suit::Diamonds);
-    let c7 = Card(Value::Three, Suit::Clubs);
+    let c1 = Card::new(Value::Two, Suit::Spades);
+    let c2 = Card::new(Value::Two, Suit::Hearts);
+    let c3 = Card::new(Value::Two, Suit::Diamonds);
+    let c4 = Card::new(Value::Two, Suit::Clubs);
+    let c5 = Card::new(Value::Three, Suit::Hearts);
+    let c6 = Card::new(Value::Three, Suit::Diamonds);
+    let c7 = Card::new(Value::Three, Suit::Clubs);
 
     let cards = [&c1, &c2, &c3, &c4, &c5, &c6, &c7];
     let rank = table.eval_7cards(cards);
@@ -54,26 +54,26 @@ fn evaluate() {
     let in_path = Path::new(HAND_RANK_PATH);
     let table = LookupTable::load(&in_path);
 
-    let c1 = Card(Value::Two, Suit::Spades);
-    let c2 = Card(Value::Two, Suit::Hearts);
-    let c3 = Card(Value::Two, Suit::Diamonds);
-    let c4 = Card(Value::Two, Suit::Clubs);
-    let c5 = Card(Value::Three, Suit::Hearts);
-    let c6 = Card(Value::Three, Suit::Diamonds);
-    let c7 = Card(Value::Three, Suit::Clubs);
+    let c1 = Card::new(Value::Two, Suit::Spades);
+    let c2 = Card::new(Value::Two, Suit::Hearts);
+    let c3 = Card::new(Value::Two, Suit::Diamonds);
+    let c4 = Card::new(Value::Two, Suit::Clubs);
+    let c5 = Card::new(Value::Three, Suit::Hearts);
+    let c6 = Card::new(Value::Three, Suit::Diamonds);
+    let c7 = Card::new(Value::Three, Suit::Clubs);
 
     let cards = [&c1, &c2, &c3, &c4, &c5, &c6, &c7];
     let rank = table.eval_7cards(cards);
 
     assert_eq!(hand_rank_to_class(&(rank as u16)), HandRankClass::FourOfAKind);
 
-    let c1 = Card(Value::Two, Suit::Spades);
-    let c2 = Card(Value::Two, Suit::Hearts);
-    let c3 = Card(Value::Four, Suit::Diamonds);
-    let c4 = Card(Value::Six, Suit::Clubs);
-    let c5 = Card(Value::King, Suit::Hearts);
-    let c6 = Card(Value::Three, Suit::Diamonds);
-    let c7 = Card(Value::Three, Suit::Clubs);
+    let c1 = Card::new(Value::Two, Suit::Spades);
+    let c2 = Card::new(Value::Two, Suit::Hearts);
+    let c3 = Card::new(Value::Four, Suit::Diamonds);
+    let c4 = Card::new(Value::Six, Suit::Clubs);
+    let c5 = Card::new(Value::King, Suit::Hearts);
+    let c6 = Card::new(Value::Three, Suit::Diamonds);
+    let c7 = Card::new(Value::Three, Suit::Clubs);
 
     let cards = [&c1, &c2, &c3, &c4, &c5, &c6, &c7];
     let rank = table.eval_7cards(cards);

@@ -34,28 +34,26 @@ pub type HandRank = u16;
 
 // translate a card to the internal card representation - usize from 1 to 52 inclusive
 pub fn translate_card(card: &Card) -> usize {
-    let &Card(ref card_value, ref card_suit) = card;
-
-    let value = 4*match card_value {
-        &Value::Two => 0,
-        &Value::Three => 1,
-        &Value::Four => 2,
-        &Value::Five => 3,
-        &Value::Six => 4,
-        &Value::Seven => 5,
-        &Value::Eight => 6,
-        &Value::Nine => 7,
-        &Value::Ten => 8,
-        &Value::Jack => 9,
-        &Value::Queen => 10,
-        &Value::King => 11,
-        &Value::Ace => 12,
+    let value = 4*match card.value {
+        Value::Two => 0,
+        Value::Three => 1,
+        Value::Four => 2,
+        Value::Five => 3,
+        Value::Six => 4,
+        Value::Seven => 5,
+        Value::Eight => 6,
+        Value::Nine => 7,
+        Value::Ten => 8,
+        Value::Jack => 9,
+        Value::Queen => 10,
+        Value::King => 11,
+        Value::Ace => 12,
     };
-    let suit = match card_suit {
-        &Suit::Hearts => 0,
-        &Suit::Spades => 1,
-        &Suit::Diamonds => 2,
-        &Suit::Clubs => 3,
+    let suit = match card.suit {
+        Suit::Hearts => 0,
+        Suit::Spades => 1,
+        Suit::Diamonds => 2,
+        Suit::Clubs => 3,
     };
 
     (suit + value) + 1 //the cards start at 1 and go to 52

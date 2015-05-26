@@ -7,7 +7,7 @@ authors = ["Vladislav Supalov <v.supalov@gmail.com>"]
 name = "pokerlookup"
 
 [[bin]]
-name = "genrate"
+name = "generate"
 path = "src/bin/main.rs"
 
 [dependencies.cards]

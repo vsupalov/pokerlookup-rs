@@ -98,8 +98,6 @@ impl LookupTable {
             }
         }
 
-        println!("Subhands: {} (612978?)", sub_hands.len()); //TODO: remove this?
-
         // assign an id to each subhand, thanks to the map type they are sorted already for reproducible results
         let mut position = 0;
         for (_, val) in sub_hands.iter_mut() {

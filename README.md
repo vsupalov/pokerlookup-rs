@@ -23,6 +23,10 @@ Afterwards the tests should run through successfully, evaluating all possible 5-
 $ cargo test
 ```
 
+## Checksum
+
+The md5 sum of the generated *HandRanks.dat* file should be *5003cf3e6d5c9b8ee77094e168bfe73f*.
+
 ## License
 As the original cpp code for this was licensed under GPL, this crate carries a similar license.
 

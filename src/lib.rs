@@ -70,6 +70,7 @@ impl LookupTable {
 
         let mut sub_hands : BTreeMap<u64, i64> = BTreeMap::new();
         let mut sub_hand_queue : VecDeque<u64> = VecDeque::new();
+        // this variable could be made a return value, or moved into the single loops
         let mut numcards : i32 = 0; // TODO: as far as i see, this goes from 1 to 7, set in make_id
 
         // seed the sub_hands with a 0
@@ -79,11 +80,10 @@ impl LookupTable {
 
         // find all possible sub_hands
         while !sub_hand_queue.is_empty() {
-            let sub_hand = sub_hand_queue.pop_front().unwrap(); //DIFFERENCE: this differs from the original code. They use front first, and pop later
+            let sub_hand = sub_hand_queue.pop_front().unwrap();
 
             // ORIG: start at 1 so I have a zero catching entry (just in case)
             for card in 1..53 {
-                // DIFFERENCE: 'explicit numcards pass' differs
                 let a_card_more : i64 = match make_id(sub_hand as i64, card, &mut numcards) {
                     None => continue, //impossible hand
                     Some(x) => x
@@ -91,7 +91,7 @@ impl LookupTable {
 
                 let ret = sub_hands.insert(a_card_more as u64, 0);
 
-                // queue the new hand id up, if it hasn't been yet if it's fresh and isn't a 7 card hand
+                // queue the new hand id up, if it hasn't been yet and isn't a 7 card hand
                 if ret == None && numcards < 6 {
                     sub_hand_queue.push_back(a_card_more as u64); 
                 }
@@ -114,24 +114,20 @@ impl LookupTable {
                 };
 
                 if numcards == 7 {
-                    hr[max_hr as usize] = do_eval(a_card_more); //do_eval(*sub_hand as i64, &numcards) //DIFFERENCE: idem numcards
+                    hr[max_hr as usize] = do_eval(a_card_more);
                     continue;
                 }
                 if a_card_more == 0 { 
                     continue;
                 }
 
-                let a_card_more_it = sub_hands.get(&(a_card_more as u64));
-                if a_card_more_it == None {
-                    panic!("Couldn't find hand! {} | {}", a_card_more, sub_hand);
-                }
-
-                let a_card_more_position = a_card_more_it.unwrap();
+                let a_card_more_position = sub_hands.get(&(a_card_more as u64)).expect("Couldn't find hand!");
                 hr[max_hr as usize] = (a_card_more_position * 53 + 53) as i32;
             }
 
-            if numcards == 6 || numcards == 7 { //TODO: should this really be 6 and 7?
-                hr[(*sub_hand_position * 53 + 53) as usize] = do_eval(*sub_hand as i64); //DIFFERENCE: idem numcards
+            // this might be a tad confusing, basically we want to save hand ranks for 5 and 6 cards
+            if numcards == 6 || numcards == 7 {
+                hr[(*sub_hand_position * 53 + 53) as usize] = do_eval(*sub_hand as i64);
             }
         }
 

@@ -246,8 +246,6 @@ pub fn do_eval(id_in: i64) -> i32 {
         workcards[cardnum as usize] = PRIMES[rank as usize] | (rank << 8) | (1 << (suit+11)) | (1 << (16 + rank));
     }
 
-    //DIFFERENCE: here the original handrank is transformed to something else
-
     // return handrank
     match numevalcards {
         5 => eval_5hand(&workcards),

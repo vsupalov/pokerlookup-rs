@@ -12,11 +12,15 @@ git = "https://github.com/th4t/pokerlookup-rs.git"
 
 ## Setup
 Before running tests, execute the following command from the project root directory, to generate a HandRank.dat file.
-This will take a while. Quite a while indeed. Be patient.
+This will take a while. Not too long.
 
 ```
-$ cargo run
+# or this, to get the results way faster:
+$ cargo build --release
+$ ./target/release/generate
+
 ```
+Arguably, you could also try *cargo run*, but this will be painfully slow due to the debug build mode. Only if you want to wait a good while.
 
 Afterwards the tests should run through successfully, evaluating all possible 5-card poker hands
 ```

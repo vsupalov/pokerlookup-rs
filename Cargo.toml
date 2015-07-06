@@ -2,6 +2,10 @@
 name = "pokerlookup"
 version = "0.1.0"
 authors = ["Vladislav Supalov <v.supalov@gmail.com>"]
+keywords = ["cards", "poker"]
+description = "Contains the means to generate a large lookup table, which can be subsequently used to evaluate large amounts of 5, 6 and 7 card poker hands really fast."
+license = "GNU GPL"
+readme = "README.md"
 
 [lib]
 name = "pokerlookup"
@@ -10,14 +14,7 @@ name = "pokerlookup"
 name = "generate"
 path = "src/bin/main.rs"
 
-[dependencies.cards]
-git = "https://github.com/th4t/cards-rs.git"
-rev = "532e786e054d9e9482f8b774daf4436d9cc28349"
-
-[dependencies.holdem]
-git = "https://github.com/th4t/holdem-rs.git"
-rev = "61ca5990fd2bd296783c1f914ca8009ddd61a7e1"
-
-[dependencies.pokereval]
-git = "https://github.com/th4t/pokereval-rs.git"
-rev = "8773f970aefe15d9df6a17c7c69c6adf0fd5f2a6"
+[dependencies]
+cards = "1.1.0"
+holdem = "0.1.0"
+pokereval = "0.1.0"

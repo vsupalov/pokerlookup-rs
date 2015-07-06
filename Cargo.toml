@@ -4,7 +4,7 @@ version = "0.1.0"
 authors = ["Vladislav Supalov <v.supalov@gmail.com>"]
 keywords = ["cards", "poker"]
 description = "Contains the means to generate a large lookup table, which can be subsequently used to evaluate large amounts of 5, 6 and 7 card poker hands really fast."
-license = "GNU GPL"
+license = "GPL-3.0+"
 readme = "README.md"
 
 [lib]

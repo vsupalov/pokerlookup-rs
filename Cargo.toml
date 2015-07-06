@@ -1,9 +1,10 @@
 [package]
 name = "pokerlookup"
-version = "0.1.0"
+version = "0.1.1"
 authors = ["Vladislav Supalov <v.supalov@gmail.com>"]
 keywords = ["cards", "poker"]
 description = "Contains the means to generate a large lookup table, which can be subsequently used to evaluate large amounts of 5, 6 and 7 card poker hands really fast."
+homepage = "https://github.com/th4t/pokerlookup-rs"
 license = "GPL-3.0+"
 readme = "README.md"
 
@@ -15,6 +16,6 @@ name = "generate"
 path = "src/bin/main.rs"
 
 [dependencies]
-cards = "1.1.0"
-holdem = "0.1.0"
-pokereval = "0.1.0"
+cards = "1.1.1"
+holdem = "0.1.1"
+pokereval = "0.1.1"
